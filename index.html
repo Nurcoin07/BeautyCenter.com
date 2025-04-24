@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Мой сайт</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: sans-serif; margin: 0; padding-bottom: 60px; background: #f4f4f4; }
+    section { display: none; padding: 20px; position: relative; }
+    section.active { display: block; }
+    h2 { text-align: center; }
+    .bottom-menu {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      display: flex; justify-content: space-around; background: #b30000; color: white;
+    }
+    .bottom-menu button {
+      flex: 1; padding: 15px; border: none; background: transparent; color: white;
+      font-weight: bold; font-size: 16px;
+    }
+    .bottom-menu button.active { background: #900000; }
+
+    input, textarea {
+      width: 100%; padding: 10px; margin: 10px 0;
+      border: 1px solid #ccc; border-radius: 5px;
+    }
+    button.submit-btn {
+      background: #b30000; color: white; border: none;
+      padding: 10px; width: 150px; border-radius: 5px; cursor: pointer;
+    }
+    button.submit-btn:hover { background: #900000; }
+    .message { color: green; font-weight: bold; }
+
+  .gallery {
+  display: grid;
+  grid-template-columns: 1fr; /* только один столбец */
+  gap: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+
+.item {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px; /* можно настроить */
+}
+
+.item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.item p {
+  padding: 1px;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+
+    .lang-switch {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .lang-switch select {
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .course-card {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+      background-color: #fdfdfd;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .course-card h3 {
+      margin-top: 0;
+      color: #c00;
+    }
+    .enroll-btn {
+      margin-top: 10px;
+      background-color: #c00;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .enroll-btn:hover {
+      background-color: #900;
+    }
+  #reviewsList{
+    margin: 0;
+      padding: 0;
+     
+      background-size: cover;         /* чтобы изображение покрывало весь экран */
+      background-position: center;    /* центрируем */
+      background-repeat: no-repeat;   /* не повторяется */
+      height: auto;                  /* 100% высоты экрана */
+      width: 100%;
+  }
+  marquee{
+    background-color: #E98484;
+  }
+  .faq{max-width:700px;margin:30px auto;font-family:sans-serif}
+.q{cursor:pointer;padding:10px;border-bottom:1px solid #ccc;display:flex;justify-content:space-between;color:#d60000;font-weight:bold}
+.a{max-height:0;overflow:hidden;transition:.3s;color:#444;padding:0 10px}
+.q.open+.a{max-height:200px;padding:10px}
+.promo-image-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .promo-image-container img {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .promo-image-container img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  .promo-title {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #222;
+  }
+  </style>
+</head>
+<body>
+  <!-- Главная -->
+  <section id="home" class="active">
+    
+    <div class="lang-switch">
+      <select onchange="switchLanguage(this.value)">
+        <option value="ru">Рус</option>
+        <option value="kz">Қаз</option>
+      </select>
+    </div>
+    <img src="https://i.postimg.cc/P5VJ9dr5/image.png" width="100%" alt="" />
+    <img width="100%" src="https://i.postimg.cc/PfV5fB1N/20250421-151025.jpg" alt="" />
+    <marquee height="50px"><h3>Оставьте заявку ↓</h3></marquee>
+    <div class="z">
+      
+    
+    <h2 data-ru="Оставьте заявку" data-kz="Өтініш қалдырыңыз">Оставьте заявку</h2>
+    <input type="text" id="name" placeholder="Ваше имя" />
+    <input type="tel" id="phone" placeholder="Номер телефона" />
+    <button class="submit-btn" onclick="submitApplication()" data-ru="Отправить" data-kz="Жіберу">Отправить</button>
+    <div class="message" id="message"></div>
+    </div>
+    <br /><br />
+    <img width="100%" src="https://i.postimg.cc/J0s73bh4/20250421-181542.png" alt="" />
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7ac77106004e74f250ab12269e828e4cb4b15ad8088f2f3e84dbf16d00358515&amp;source=constructor" width="100%" height="267" frameborder="0"></iframe>
+    <br /><br />
+    <div class="promo-image-container">
+  <div class="promo-title">🎉 Наши лучшие предложения по курсам английского!</div>
+  <img src="https://i.postimg.cc/Dzm09L9T/Chat-GPT-Image-20-2025-15-13-52.png" alt="Акционные цены на курсы английского">
+</div>
+<hr />
+  
+    <!-- Форма для отзыва -->
+    <h2>Оставьте свой отзыв</h2>
+    <input type="text" id="reviewerName" placeholder="Ваше имя" />
+    <textarea id="reviewText" placeholder="Ваш отзыв"></textarea>
+    <button class="submit-btn" onclick="submitReview()">Отправить отзыв</button>
+    <div class="message" id="reviewMessage"></div>
+
+    <h3>Отзывы:</h3>
+    
+    <div id="reviewsList"></div>
+    <hr />
+    <br />
+    <br />
+    <div class="faq">
+      <h1><font color="black">FAQ - <font color="#C1321C">Вопросы и Ответы<font color="black">:</font></font></font></h1>
+  <div class="q" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">Как зарегистрироваться?<span><font color="black">+</font></span></div>
+  <div class="a">Заполните форму заявки и нажмите отправить.</div>
+
+  <div class="q" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">Сколько стоит обучение?<span><font color="black">+</font></span></div>
+  <div class="a">Бесплатно. Платный курс — от 3000₸.</div>
+
+  <div class="q" onclick="this.classList.toggle('open'); this.nextElementSibling.classList.toggle('open')">Как работает рефералка?<span><font color="black">+</font></span></div>
+  <div class="a">За друга — 5000₸. Ссылка в профиле.</div>
+</div>
+  </section>
+
+  <!-- Новости -->
+  <section id="news">
+    <div class="lang-switch">
+      <select onchange="switchLanguage(this.value)">
+        <option value="ru">Рус</option>
+        <option value="kz">Қаз</option>
+      </select>
+    </div>
+   
+    <iframe src="https://nurcoin07.github.io/news/" frameborder="0" width="100%" height="1000px"></iframe>
+  </section>
+
+   <!-- Игра -->
+  <section id="game">
+    <div class="lang-switch">
+      <select onchange="switchLanguage(this.value)">
+        <option value="ru">Рус</option>
+        <option value="kz">Қаз</option>
+      </select>
+    </div>
+    <h2 data-ru="Игра" data-kz="Ойын">Игра</h2>
+     <div >
+  <iframe width="100%" height="400px" src="https://gd.games/games/05a04141-1075-4603-8314-520a8a97a25a"
+    allowfullscreen></iframe>
+</div>
+
+  </section>
+
+
+  <!-- Курсы -->
+  <section id="courses">
+    <div class="lang-switch">
+      <select onchange="switchLanguage(this.value)">
+        <option value="ru">Рус</option>
+        <option value="kz">Қаз</option>
+      </select>
+    </div>
+    
+    <h2 data-ru="Курсы" data-kz="Курстар">Курсы</h2>
+
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://1prof.by/wp-content/uploads/2020/08/399242-PCOPDI-903-scaled.jpg" alt="" /><h3>Айгүл — Английский для начинающих</h3><p>Опыт: 5 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=0724f57b92c66a4569d2c61dbf7341fe442fbbca-4228606-images-thumbs&n=13" alt="" /><h3>Руслан — Немецкий для начинающих</h3><p>Опыт: 4 года</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=9c5c014b63d55d278b8648f8f3280cc7_l-5238112-images-thumbs&n=13" alt="" /><h3>Салтанат — Французский разговорный</h3><p>Опыт: 6 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://img.freepik.com/photos-gratuite/positive-prof-maths-s-appuyer-bureau_23-2148201034.jpg?w=2000" alt="" /><h3>Дамир — Подготовка к IELTS</h3><p>Опыт: 7 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://cdn.culture.ru/images/3b375d95-8327-5f05-b091-9ff1c09b62d6" alt="" /><h3>Надежда — Испанский для начинающих</h3><p>Опыт: 3 года</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=580b395bcb25d9f7172d31d693de6f1c_l-5099371-images-thumbs&n=13" alt="" /><h3>Алишер — Китайский язык (HSK)</h3><p>Опыт: 5 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=57d828bab3e0a64b00a7a535834303fd_l-5209452-images-thumbs&n=13" alt="" /><h3>Лаура — Английский для детей</h3><p>Опыт: 6 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=b18354b36d7bfeb7bf94023b63a21f8a_l-5661324-images-thumbs&n=13" alt="" /><h3>Ермек — Турецкий для путешествий</h3><p>Опыт: 4 года</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=8008352b56173225367e06d445a9dda9_l-5487857-images-thumbs&n=13" alt="" /><h3>Асель — Японский язык</h3><p>Опыт: 5 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  <div class="course-card"><img style="display: block; margin: 0 auto;" height="100%" width="100%" src="https://avatars.mds.yandex.net/i?id=c80128a04b952cc745eb3d80a3b6dd91_l-12488046-images-thumbs&n=13" alt="" /><h3>Жанат — Подготовка к TOEFL</h3><p>Опыт: 8 лет</p><button class="enroll-btn" onclick="showSection('home')">Записаться</button></div>
+  </section>
+
+  
+  
+  
+  <footer style="background-color: #222; color: white; text-align: center; padding: 20px; font-family: sans-serif;">
+  <p style="margin: 0; font-size: 18px;">© 2025 English Courses. All rights reserved.</p>
+  <p style="margin: 5px 0;">
+    <a href="https://t.me/yourchannel" style="color: #1DA1F2; text-decoration: none; margin: 0 10px;">Telegram</a> |
+    <a href="https://wa.me/77000000000" style="color: #25D366; text-decoration: none; margin: 0 10px;">WhatsApp</a> |
+    <a href="#courses" style="color: #ccc; text-decoration: none; margin: 0 10px;">Курсы</a>
+  </p>
+</footer>
+
+
+  <!-- Меню -->
+  <div class="bottom-menu">
+    <button onclick="showSection('home')" class="active" data-ru="Главная" data-kz="Басты">Главная</button>
+    <button onclick="showSection('news')" data-ru="Новости" data-kz="Жаңалықтар">Новости</button>
+    <!--<button onclick="showSection('game')" data-ru="Игра" data-kz="Ойын">Игра</button>-->
+    <button onclick="showSection('courses')" data-ru="Курсы" data-kz="Курстар">Курсы</button>
+    <!--<button onclick="showSection('teachers')" data-ru="Учителя" data-kz="Мұғалімдер">Учителя</button>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    const appZayavki = firebase.initializeApp({
+      apiKey: "AIzaSyC7dvYmljzcd59vWGRZZ5HpPL4G0q_LvlA",
+      authDomain: "zayavki-my.firebaseapp.com",
+      projectId: "zayavki-my"
+    }, "zayavkiApp");
+    const dbZayavki = appZayavki.firestore();
+
+    async function submitApplication() {
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const messageDiv = document.getElementById('message');
+
+      if (!name || !phone) {
+        messageDiv.textContent = currentLang === 'ru' ? "Заполните все поля!" : "Барлық өрістерді толтырыңыз!";
+        return;
+      }
+
+      try {
+        await dbZayavki.collection("zayavki").add({
+          name: name,
+          phone: phone,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        messageDiv.textContent = currentLang === 'ru' ? "Заявка успешно отправлена!" : "Өтініш сәтті жіберілді!";
+        document.getElementById('name').value = "";
+        document.getElementById('phone').value = "";
+      } catch (error) {
+        console.error("Ошибка:", error);
+        messageDiv.textContent = currentLang === 'ru' ? "Ошибка при отправке." : "Жіберу кезінде қате.";
+      }
+    }
+
+    const appPosts = firebase.initializeApp({
+      apiKey: "AIzaSyC6Fb896Rx_jFJ3SYUJd6EAjjcRdXYHyFY",
+      authDomain: "my-posts-site.firebaseapp.com",
+      projectId: "my-posts-site"
+    }, "postsApp");
+    const dbPosts = appPosts.firestore();
+
+    const images = [
+      'https://cdn.vox-cdn.com/thumbor/2pikPu6K3IAQ9yDs5Vsbk9ArsB0=/0x0:3000x2000/1200x628/filters:focal(1500x1000:1501x1001)/cdn.vox-cdn.com/uploads/chorus_asset/file/23954497/acastro_STK459_01.jpg',
+      'https://picsum.photos/id/1025/400/200',
+      'https://picsum.photos/id/1035/400/200',
+      'https://picsum.photos/id/1045/400/200',
+      'https://picsum.photos/id/1055/400/200',
+      'https://picsum.photos/id/1065/400/200',
+      'https://picsum.photos/id/1075/400/200',
+      'https://cdn.vox-cdn.com/thumbor/2pikPu6K3IAQ9yDs5Vsbk9ArsB0=/0x0:3000x2000/1200x628/filters:focal(1500x1000:1501x1001)/cdn.vox-cdn.com/uploads/chorus_asset/file/23954497/acastro_STK459_01.jpg',
+      'https://cdn.vox-cdn.com/thumbor/2pikPu6K3IAQ9yDs5Vsbk9ArsB0=/0x0:3000x2000/1200x628/filters:focal(1500x1000:1501x1001)/cdn.vox-cdn.com/uploads/chorus_asset/file/23954497/acastro_STK459_01.jpg',
+      'https://cdn.vox-cdn.com/thumbor/2pikPu6K3IAQ9yDs5Vsbk9ArsB0=/0x0:3000x2000/1200x628/filters:focal(1500x1000:1501x1001)/cdn.vox-cdn.com/uploads/chorus_asset/file/23954497/acastro_STK459_01.jpg'
+    ];
+
+    async function loadTexts() {
+      const gallery = document.getElementById('gallery');
+      const snapshot = await dbPosts.collection("texts").orderBy("createdAt", "desc").get();
+      const allDocs = snapshot.docs;
+      const latest10 = allDocs.slice(0, 10);
+      const extra = allDocs.slice(10);
+      extra.forEach(doc => doc.ref.delete());
+
+      gallery.innerHTML = "";
+      for (let i = 0; i < 10; i++) {
+        const text = latest10[i]?.data().text || (currentLang === 'ru' ? "Пока нет текста" : "Мәтін әлі жоқ");
+        const imageUrl = images[i];
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `<img src="${imageUrl}" alt="Image ${i+1}"><p>${text}</p>`;
+        gallery.appendChild(div);
+      }
+    }
+
+    async function submitReview() {
+      const reviewerName = document.getElementById('reviewerName').value.trim();
+      const reviewText = document.getElementById('reviewText').value.trim();
+      const reviewMessageDiv = document.getElementById('reviewMessage');
+
+      if (!reviewerName || !reviewText) {
+        reviewMessageDiv.textContent = "Заполните все поля!";
+        return;
+      }
+
+      try {
+        await dbPosts.collection("reviews").add({
+          name: reviewerName,
+          review: reviewText,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        reviewMessageDiv.textContent = "Отзыв успешно отправлен!";
+        document.getElementById('reviewerName').value = "";
+        document.getElementById('reviewText').value = "";
+        loadReviews(); // Обновляем список отзывов
+      } catch (error) {
+        console.error("Ошибка:", error);
+        reviewMessageDiv.textContent = "Ошибка при отправке отзыва.";
+      }
+    }
+
+    async function loadReviews() {
+      const reviewsList = document.getElementById('reviewsList');
+      const snapshot = await dbPosts.collection("reviews").orderBy("createdAt", "desc").get();
+      reviewsList.innerHTML = '';
+      snapshot.docs.forEach(doc => {
+        const reviewData = doc.data();
+        const reviewElement = document.createElement('div');
+        reviewElement.innerHTML = `<p><strong>${reviewData.name}:</strong> ${reviewData.review}</p>`;
+        reviewsList.appendChild(reviewElement);
+      });
+    }
+
+    loadTexts();
+    loadReviews();
+
+    let currentLang = 'ru';
+
+    function switchLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('[data-ru]').forEach(element => {
+        element.textContent = element.dataset[lang] || element.textContent;
+      });
+    }
+
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.bottom-menu button').forEach(btn => btn.classList.remove('active'));
+      document.querySelector(`.bottom-menu button[onclick="showSection('${id}')"]`).classList.add('active');
+    }
+    
+  </script>
+</body>
+</html>
