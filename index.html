@@ -155,14 +155,82 @@
     h1 {
       color: #b3003c;
     }
+/* Шапка */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
 
+    .logo img {
+      height: 40px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #FFCCE5;
+    }
+
+    /* Отступ сверху, чтобы контент не ушёл под меню */
+    .spacer {
+      height: 70px;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .logo img {
+        height: 35px;
+      }
+    }
         
   </style>
 </head>
 <body>
+  <!-- Меню -->
+  <header>
+    <div class="logo">
+      <img src="https://avatars.mds.yandex.net/get-altay/897342/2a0000018bb88bb24614fb0af7bd06fb4742/XXL_height" alt="Логотип" />
+    </div>
+    <nav class="nav-links">
+      <a href="#nas">О нас</a>
+      <a href="#zay">Заявка</a>
+      <a href="#address">Адрес</a>
+      <a href="#ot">Отзывы</a>
+    </nav>
+  </header>
+
+  <!-- Отступ, чтобы не перекрывать контент -->
+  <div class="spacer"></div>
 <!-- Фото с анимацией -->
   <div class="hero">
-    <img src="https://i.postimg.cc/htnZDJxp/image.png" alt="Салон Красоты">
+    <img id="nas" src="https://i.postimg.cc/htnZDJxp/image.png" alt="Салон Красоты">
   </div>
 <button style="
     padding: 15px 30px;
@@ -182,7 +250,7 @@
 
   <!-- Содержание -->
   <div class="content">
-    <h1>Добро пожаловать в наш Салон Красоты</h1>
+    <h1 >Добро пожаловать в наш Салон Красоты</h1>
     <p>Заботьтесь о себе вместе с нами — почувствуйте роскошь и комфорт с первых минут!</p>
   </div>
 <div class="hero">
@@ -191,12 +259,12 @@
 
 
     
-    <marquee height="50px"><h3>Оставьте заявку ↓</h3></marquee>
+    <marquee height="50px" ><h3 id="zay">Оставьте заявку ↓</h3></marquee>
     <div class="z">
       
     
 
-    <h2 id="zay" data-ru="Оставьте заявку" data-kz="Өтініш қалдырыңыз">Оставьте заявку</h2>
+    <h2 data-ru="Оставьте заявку" data-kz="Өтініш қалдырыңыз">Оставьте заявку</h2>
     <input type="text" id="name" placeholder="Ваше имя" />
     <input type="tel" id="phone" placeholder="Номер телефона" />
     <button class="submit-btn" onclick="submitApplication()" data-ru="Отправить" data-kz="Жіберу">Отправить</button>
@@ -204,17 +272,17 @@
     </div>
 
     <br /><br />
-    <img width="100%" src="https://i.postimg.cc/vT8CZcCJ/image.png" alt="Салон Красоты">
+    <img id="address" width="100%" src="https://i.postimg.cc/vT8CZcCJ/image.png" alt="Салон Красоты">
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7ac77106004e74f250ab12269e828e4cb4b15ad8088f2f3e84dbf16d00358515&amp;source=constructor" width="100%" height="267" frameborder="0"></iframe>
     <br /><br />
     <div class="promo-image-container">
   <div class="promo-title">🎉 Transform Beauty!</div>
-  <img src="https://i.postimg.cc/sDh4ZVyq/image.png" alt="Акционные цены на курсы английского">
+  <img  src="https://i.postimg.cc/sDh4ZVyq/image.png" alt="Акционные цены на курсы английского">
 </div>
-<hr />
+<hr / id="ot">
   
     <!-- Форма для отзыва -->
-    <h2>Оставьте свой отзыв</h2>
+    <h2 >Оставьте свой отзыв</h2>
     <input type="text" id="reviewerName" placeholder="Ваше имя" />
     <textarea id="reviewText" placeholder="Ваш отзыв"></textarea>
     <button class="submit-btn" onclick="submitReview()">Отправить отзыв</button>
