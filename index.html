@@ -6,8 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body { font-family: sans-serif; margin: 0; padding-bottom: 60px; background: #f4f4f4; }
-    section { display: none; padding: 20px; position: relative; }
-    section.active { display: block; }
+    section {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    .highlight {
+      background: #ffeef0;
+    }
     h2 { text-align: center; }
     .bottom-menu {
       position: fixed; bottom: 0; left: 0; right: 0;
@@ -209,7 +214,71 @@
         height: 35px;
       }
     }
-        
+     #heading {
+      background: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    #heading h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+    #heading p {
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }   
+.btn {
+      background: #f2c1c1;
+      color: #000;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 0.5rem;
+.experts {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .expert {
+      width: 200px;
+      text-align: center;
+    }
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 2rem 0;
+    }
+    .card {
+      width: 200px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+    .cta {
+      background: #fff0f0;
+      padding: 2rem 1rem;
+    }
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    @media (max-width: 600px) {
+      .experts, .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   </style>
 </head>
 <body>
@@ -225,45 +294,36 @@
       <a href="#ot">Отзывы</a>
     </nav>
   </header>
-
-  <!-- Отступ, чтобы не перекрывать контент -->
+<!-- Отступ, чтобы не перекрывать контент -->
   <div class="spacer"></div>
+
+  
 <!-- Фото с анимацией -->
   <div class="hero">
     <img id="nas" src="https://i.postimg.cc/htnZDJxp/image.png" alt="Салон Красоты">
   </div>
-<button style="
-    padding: 15px 30px;
-    font-size: 10px;
-    background: linear-gradient(45deg, #E98484, #c75757);
-    border: none;
-    color: white;
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-" onclick="document.getElementById('zay').scrollIntoView({ behavior: 'smooth' })">
-    Подать заявку
-</button>
+<div id="heading">
+<h1>WELCOME TO OUR BEAUTY</h1>
+  <p>Enhance your elegance and glow with our transformative beauty experience.</p>
+  <button class="btn" onclick="document.getElementById('zay').scrollIntoView({ behavior: 'smooth' })">Explore Services</button>
+  <button class="btn" onclick="document.getElementById('zay').scrollIntoView({ behavior: 'smooth' })">Book Now</button>
+</div>
 
-  <!-- Содержание -->
-  <div class="content">
-    <h1 >Добро пожаловать в наш Салон Красоты</h1>
-    <p>Заботьтесь о себе вместе с нами — почувствуйте роскошь и комфорт с первых минут!</p>
-  </div>
+  
 <div class="hero">
     <img src="https://i.postimg.cc/j27bkzZs/image.png" alt="Салон Красоты">
   </div>
 
 
     
-    <marquee height="50px" ><h3 id="zay">Оставьте заявку ↓</h3></marquee>
-    <div class="z">
-      
-    
+    <marquee height="50px" ><h3 >Оставьте заявку ↓</h3></marquee>
+<section class="highlight">
+  <h2>Embrace Your Natural Beauty</h2>
+  <p>We believe everyone is beautiful. Let us help you shine brighter.</p>
+  <img id="zay" src="https://i.postimg.cc/vT8CZcCJ/image.png" alt="Beauty Image" style="max-width:100%; border-radius: 10px; margin-top: 1rem;">
+</section>
 
+    <div class="z">
     <h2 data-ru="Оставьте заявку" data-kz="Өтініш қалдырыңыз">Оставьте заявку</h2>
     <input type="text" id="name" placeholder="Ваше имя" />
     <input type="tel" id="phone" placeholder="Номер телефона" />
@@ -272,22 +332,64 @@
     </div>
 
     <br /><br />
-    <img id="address" width="100%" src="https://i.postimg.cc/vT8CZcCJ/image.png" alt="Салон Красоты">
+    
     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7ac77106004e74f250ab12269e828e4cb4b15ad8088f2f3e84dbf16d00358515&amp;source=constructor" width="100%" height="267" frameborder="0"></iframe>
     <br /><br />
+<section>
+  <h2>UNPARALLELED EXPERTISE</h2>
+  <div class="experts">
+    <div class="expert">
+      <img src="https://yobte.ru/uploads/posts/2019-11/devushka-s-chernymi-glazami-i-chernymi-volosami-64-foto-10.jpg" width="70%" alt="Expert 1" style="border-radius: 50%;">
+      <h4>Beauty Artist</h4>
+      <p>Skilled in makeup & skincare</p>
+    </div>
+    <div class="expert">
+      <img src="https://avatars.mds.yandex.net/i?id=9bde6ae8c3e0cf8868b5eaef3ba6a7ca_l-7545599-images-thumbs&n=13" width="70%" alt="Expert 2" style="border-radius: 50%;">
+      <h4>Stylist</h4>
+      <p>Elegant hair transformations</p>
+    </div>
+    <div class="expert">
+      <img src="https://i.pinimg.com/originals/ad/88/3a/ad883a8317f200bd2d9d7a68dd9bebc7.jpg" width="70%" alt="Expert 3" style="border-radius: 50%;">
+      <h4>Skin Specialist</h4>
+      <p>Glow with confidence</p>
+    </div>
+  </div>
+</section>
     <div class="promo-image-container">
   <div class="promo-title">🎉 Transform Beauty!</div>
   <img  src="https://i.postimg.cc/sDh4ZVyq/image.png" alt="Акционные цены на курсы английского">
 </div>
 <hr / id="ot">
+<section class="highlight">
+  <h2>OUR TRANSFORMATIONS</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="https://avatars.mds.yandex.net/i?id=bfbcb5dac4789de2f5698b90492aa29e_l-9149535-images-thumbs&n=13" width="100%" alt="Before/After 1">
+    </div>
+    <div class="card">
+      <img src="https://i.ytimg.com/vi/nPnpwLanjgo/maxresdefault.jpg" width="100%" alt="Before/After 2">
+    </div>
+    <div class="card">
+      <img src="https://avatars.mds.yandex.net/i?id=a5a1d0aa6c41812d84d2629ebe28db2d_l-9690550-images-thumbs&n=13" width="100%" alt="Before/After 3">
+    </div>
+  </div>
+
+</section>
+<section class="cta">
+  <h2>DISCOVER THE TRANSFORMATIVE TOUCH</h2>
+  <p>Schedule your session now and feel the change within.</p>
+  <button class="btn" onclick="document.getElementById('zay').scrollIntoView({ behavior: 'smooth' })">Book Appointment</button>
+</section>
   
+
+
     <!-- Форма для отзыва -->
     <h2 >Оставьте свой отзыв</h2>
     <input type="text" id="reviewerName" placeholder="Ваше имя" />
     <textarea id="reviewText" placeholder="Ваш отзыв"></textarea>
     <button class="submit-btn" onclick="submitReview()">Отправить отзыв</button>
     <div class="message" id="reviewMessage"></div>
-
+<section class="highlight">
     <h3>Отзывы:</h3>
     
     <div id="reviewsList"></div>
@@ -312,17 +414,16 @@
   
   
   
-  <footer style="background-color: #222; color: white; text-align: center; padding: 20px; font-family: sans-serif;">
-  <p style="margin: 0; font-size: 18px;">© 2025 English Courses. All rights reserved.</p>
-  <p style="margin: 5px 0;">
-    <a href="https://t.me/yourchannel" style="color: #1DA1F2; text-decoration: none; margin: 0 10px;">Telegram</a> |
-    <a href="https://wa.me/77000000000" style="color: #25D366; text-decoration: none; margin: 0 10px;">WhatsApp</a> |
-    <a href="#courses" style="color: #ccc; text-decoration: none; margin: 0 10px;">Курсы</a>
-  </p>
+  <footer id="foot" style="
+  background: #2a2a2a;
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+">
+  <p>&copy; 2025 Beauty Studio. All rights reserved.</p>
+  <p>Instagram | Facebook | Twitter</p>
+  
 </footer>
-
-    
-
   <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
